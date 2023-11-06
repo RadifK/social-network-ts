@@ -1,0 +1,13 @@
+.wall {
+	display: flex;
+	flex-direction: column-reverse;
+	row-gap: 20px;
+	width: 35%;
+	margin: 0 auto;
+
+	.createPostForm {
+		width: 100%;
+		display: flex;
+		column-gap: 10px;
+	}
+}

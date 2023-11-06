@@ -1,0 +1,10 @@
+@import './reset-style.scss';
+@import './variables.scss';
+
+
+
+.App {
+	background-color: $bgc;
+	height: 100vh;
+	padding-top: 20px;
+}

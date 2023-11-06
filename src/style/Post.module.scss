@@ -1,0 +1,75 @@
+@import './variables.scss';
+
+
+.post {
+	background-color: #fff;
+	width: 100%;
+	margin: 0 auto;
+	padding: 16px;
+	border-radius: 12px;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+
+
+	.authorName {
+		font-size: 13px;
+		color: $color-blue;
+		font-weight: 500;
+		margin-bottom: 10px;
+	}
+
+	.message {
+		font-size: 13px;
+		font-weight: 400;
+		margin-bottom: 10px;
+	}
+
+
+
+
+
+	.likes {
+		display: flex;
+		align-items: center;
+		justify-content: space-evenly;
+		background-color: $bgc;
+		max-width: 35px;
+		border-radius: 10px;
+		padding: 2px 0;
+		cursor: pointer;
+		grid-column-start: 1;
+
+
+		.likesImg {
+			width: 15px;
+		}
+
+		.likesCount {
+			font-size: 13px;
+			font-weight: 500;
+		}
+
+	}
+
+	.liked {
+		background-color: rgba($color: #FF3347, $alpha: 0.3);
+		color: red;
+	}
+
+	.editImg {
+		height: 15px;
+		justify-self: end;
+		grid-row-start: 1;
+		grid-column-start: 2;
+		cursor: pointer;
+		margin-right: 30px;
+	}
+
+	.deletePost {
+		height: 15px;
+		justify-self: end;
+		cursor: pointer;
+		grid-row-start: 1;
+		grid-column-start: 2;
+	}
+}
