@@ -5,6 +5,12 @@
 
 .App {
 	background-color: $bgc;
-	height: 100vh;
-	padding-top: 20px;
+	min-height: 100vh;
+	display: grid;
+	grid-template-rows: 70px 1fr;
+}
+
+.main {
+	display: grid;
+	grid-template-columns: 1fr 3fr 2fr;
 }

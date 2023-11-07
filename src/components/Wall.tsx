@@ -1,8 +1,7 @@
 import { ChangeEvent, MouseEvent, useState } from 'react'
 import s from './../style/Wall.module.scss'
 import Post from './Post'
-import MyButton from './UI/MyButton'
-import MyInput from './UI/MyInput'
+import CreatePostForm from './createPostForm'
 
 
 
@@ -28,7 +27,7 @@ const Wall = () => {
 			id: 3,
 			authorName: 'Radif Nurlanovich',
 			likes: 5,
-			message: 'gg wp',
+			message: 'gg wpgg wpgg wpgg wpgg wpgg wpgg wpgg wpgg wpgg wpgg wpgg wpgg wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww',
 			isLiked: true
 		},
 	])
@@ -40,30 +39,33 @@ const Wall = () => {
 	}
 
 	const likeClick = (id: number) => {
-		for (let i = 0; i < posts.length; i++) {
-			if (posts[i].id === id) {
-				if (posts[i].isLiked) {
-					posts[i].isLiked = false;
-					posts[i].likes -= 1;
+
+		const newPosts = posts.map(post => {
+			if (post.id === id) {
+				if (post.isLiked) {
+					post.isLiked = false;
+					post.likes -= 1;
 				}
 				else {
-					posts[i].isLiked = true;
-					posts[i].likes += 1;
+					post.isLiked = true;
+					post.likes += 1;
 				}
 			}
-			setPosts([...posts])
-		}
+			return post
+		})
+		setPosts(newPosts)
+
 	}
 
 	const addPost = (e: MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault()
-		setPosts([...posts, {
+		setPosts([{
 			id: Number(new Date),
 			authorName: 'Radif Nurlanovich',
 			likes: 0,
 			message: value,
 			isLiked: false
-		}])
+		}, ...posts])
 		setValue('')
 	}
 
@@ -71,12 +73,27 @@ const Wall = () => {
 		setPosts(posts.filter(post => post.id !== id))
 	}
 
+	const editPosts = (id: number, value: string) => {
+		const newPosts = posts.map(post => {
+			if (post.id === id) {
+				post.message = value
+			}
+			return post
+		})
+
+		setPosts(newPosts)
+	}
+
 
 
 	return (
 
 		<div className={s.wall}>
-
+			<CreatePostForm
+				changeHandler={changeHandler}
+				value={value}
+				addPost={addPost}
+			/>
 			{posts.map(post => <Post
 				deletePost={deletePost}
 				key={post.id}
@@ -86,16 +103,8 @@ const Wall = () => {
 				likes={post.likes}
 				isLiked={post.isLiked}
 				likeClick={likeClick}
+				editPost={editPosts}
 			/>)}
-
-			<form className={s.createPostForm} action="">
-				<MyInput onChange={changeHandler} value={value} type="text" />
-				<MyButton onClick={addPost} >Добавить пост</MyButton>
-			</form>
-
-
-
-
 		</div>
 	)
 }

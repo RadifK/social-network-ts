@@ -9,7 +9,7 @@
 	border-radius: 12px;
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-
+	white-space: pre-wrap;
 
 	.authorName {
 		font-size: 13px;
@@ -22,6 +22,8 @@
 		font-size: 13px;
 		font-weight: 400;
 		margin-bottom: 10px;
+		grid-column: 1/3;
+		word-wrap: break-word;
 	}
 
 
@@ -54,6 +56,16 @@
 	.liked {
 		background-color: rgba($color: #FF3347, $alpha: 0.3);
 		color: red;
+	}
+
+	.editForm {
+		display: flex;
+		width: 100%;
+
+	}
+
+	.invisible {
+		display: none;
 	}
 
 	.editImg {
