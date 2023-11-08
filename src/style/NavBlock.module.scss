@@ -1,0 +1,12 @@
+.nav {
+	margin-top: 5px;
+	display: flex;
+	flex-direction: column;
+	grid-column: 1/2;
+
+	li {
+		margin-bottom: 15px;
+		font-size: 14px;
+
+	}
+}

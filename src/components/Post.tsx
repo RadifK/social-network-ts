@@ -2,9 +2,8 @@ import s from '../style/Post.module.scss';
 import like from '../img/svg/like.svg';
 import cross from '../img/svg/cross.svg'
 import pencil from '../img/svg/pencil.svg'
-import { ChangeEvent, MouseEvent, FC, useState } from 'react';
-import MyInput from './UI/MyInput';
-import MyButton from './UI/MyButton';
+import { FC, useState } from 'react';
+import EditPostForm from './EditPostForm';
 
 
 interface PostProps {
@@ -23,33 +22,25 @@ interface PostProps {
 
 const Post: FC<PostProps> = ({ authorName, message, likes, isLiked, likeClick, id, deletePost, editPost }) => {
 
-	const [editPostValue, setEditPostValue] = useState(message)
 
-	const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-		setEditPostValue(e.target.value)
-	}
 
-	const clickHandler = (e: MouseEvent<HTMLButtonElement>) => {
-		e.preventDefault();
-		editPost(id, editPostValue)
-		setEditVisible(!editVisivle)
-	}
-
-	const [editVisivle, setEditVisible] = useState(false)
+	const [editVisible, setEditVisible] = useState(false)
 
 	return (
 		<div className={s.post}>
 			<div className={s.authorName}>{authorName}</div>
-			<img onClick={() => setEditVisible(!editVisivle)} className={s.editImg} src={pencil} alt="" />
+			<img onClick={() => setEditVisible(!editVisible)} className={s.editImg} src={pencil} alt="" />
+			<EditPostForm
+				id={id}
+				editVisible={editVisible}
+				setEditVisible={setEditVisible}
+				editPost={editPost}
+			/>
 
-			<form className={!editVisivle ? `${s.editForm} ${s.invisible}` : s.editForm}>
-				<MyInput value={editPostValue} onChange={changeHandler} />
-				<MyButton onClick={clickHandler} >ok</MyButton>
-			</form>
 			<img className={s.deletePost} onClick={() => {
 				deletePost(id)
 			}} src={cross} alt="" />
-			<p className={editVisivle ? `${s.message} ${s.invisible}` : s.message}>{message}</p>
+			<p className={editVisible ? `${s.message} ${s.invisible}` : s.message}>{message}</p>
 			<div className={isLiked ? `${s.likes} ${s.liked}` : s.likes} onClick={() => {
 				likeClick(id)
 			}} >

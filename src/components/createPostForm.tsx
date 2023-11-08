@@ -13,8 +13,8 @@ const createPostForm: FC<PostFormPropsType> = ({ changeHandler, value, addPost }
 
 	return (
 		<form className={s.createPostForm} action="">
-			<MyInput onChange={changeHandler} value={value} type="textarea" />
-			<MyButton onClick={addPost} >Добавить пост</MyButton>
+			<MyInput placeholder="What's new?" onChange={changeHandler} value={value} type="textarea" />
+			<MyButton onClick={addPost} >Post</MyButton>
 		</form>
 	)
 }

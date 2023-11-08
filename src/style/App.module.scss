@@ -8,9 +8,14 @@
 	min-height: 100vh;
 	display: grid;
 	grid-template-rows: 70px 1fr;
+
 }
 
 .main {
+	padding: 0 15px;
 	display: grid;
 	grid-template-columns: 1fr 3fr 2fr;
+	gap: 15px;
+	grid-template-rows: 250px 95px auto;
+
 }

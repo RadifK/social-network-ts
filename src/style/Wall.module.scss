@@ -1,10 +1,11 @@
 .wall {
 	display: flex;
 	flex-direction: column;
-	row-gap: 20px;
+	row-gap: 15px;
 	width: 100%;
 	margin: 0 auto;
 	grid-column: 2/3;
+	grid-row: 3/4;
 
 
 	.createPostForm {
