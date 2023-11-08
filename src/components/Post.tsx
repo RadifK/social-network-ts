@@ -12,6 +12,7 @@ interface PostProps {
 	message: string,
 	likes: number,
 	isLiked: Boolean,
+	date: any,
 	likeClick: (id: number) => void,
 	deletePost: (id: number) => void,
 	editPost: (id: number, value: string) => void,
@@ -20,7 +21,7 @@ interface PostProps {
 
 
 
-const Post: FC<PostProps> = ({ authorName, message, likes, isLiked, likeClick, id, deletePost, editPost }) => {
+const Post: FC<PostProps> = ({ authorName, message, likes, isLiked, likeClick, id, deletePost, editPost, date }) => {
 
 
 
@@ -29,6 +30,7 @@ const Post: FC<PostProps> = ({ authorName, message, likes, isLiked, likeClick, i
 	return (
 		<div className={s.post}>
 			<div className={s.authorName}>{authorName}</div>
+			<p className={s.date}>{date}</p>
 			<img onClick={() => setEditVisible(!editVisible)} className={s.editImg} src={pencil} alt="" />
 			<EditPostForm
 				id={id}

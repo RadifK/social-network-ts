@@ -1,5 +1,3 @@
-
-import Cover from './components/Cover'
 import FriendsBlock from './components/FriendsBlock'
 import Header from './components/Header'
 import NavBlock from './components/NavBlock'

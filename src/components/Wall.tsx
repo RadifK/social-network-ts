@@ -2,33 +2,42 @@ import { ChangeEvent, MouseEvent, useState } from 'react'
 import s from './../style/Wall.module.scss'
 import Post from './Post'
 import CreatePostForm from './createPostForm'
+import moment from 'moment'
+import MyInput from './UI/MyInput'
+import search from './../img/svg/search.svg'
 
 
 
 
 const Wall = () => {
 
+
+
 	const [posts, setPosts] = useState([
+
 		{
-			id: 1,
+			id: Number(new Date()),
 			authorName: 'Radif Nurlanovich',
 			likes: 1,
 			message: 'hello world!',
-			isLiked: false
+			isLiked: false,
+			date: moment().format('MMM Do YYYY, h:mm a')
 		},
 		{
-			id: 2,
+			id: Number(new Date()),
 			authorName: 'Radif Nurlanovich',
 			likes: 3,
 			message: 'gl hf',
-			isLiked: false
+			isLiked: false,
+			date: moment().format('MMM Do YYYY, h:mm a')
 		},
 		{
-			id: 3,
+			id: Number(new Date()),
 			authorName: 'Radif Nurlanovich',
 			likes: 5,
 			message: 'gg wpgg wpgg wpgg wpgg wpgg wpgg wpgg wpgg wpgg wpgg wpgg wpgg wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww',
-			isLiked: true
+			isLiked: true,
+			date: moment().format('MMM Do YYYY, h:mm a')
 		},
 	])
 
@@ -59,13 +68,14 @@ const Wall = () => {
 
 	const addPost = (e: MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault()
-		setPosts([{
+		setPosts([...posts, {
 			id: Number(new Date),
 			authorName: 'Radif Nurlanovich',
 			likes: 0,
 			message: value,
-			isLiked: false
-		}, ...posts])
+			isLiked: false,
+			date: moment().format('MMM Do YYYY, h:mm a')
+		}])
 		setValue('')
 	}
 
@@ -84,27 +94,38 @@ const Wall = () => {
 		setPosts(newPosts)
 	}
 
-
+	const [searchPostVisible, setSearchPostVisible] = useState(false)
 
 	return (
 
 		<div className={s.wall}>
+
 			<CreatePostForm
 				changeHandler={changeHandler}
 				value={value}
 				addPost={addPost}
 			/>
-			{posts.map(post => <Post
-				deletePost={deletePost}
-				key={post.id}
-				id={post.id}
-				authorName={post.authorName}
-				message={post.message}
-				likes={post.likes}
-				isLiked={post.isLiked}
-				likeClick={likeClick}
-				editPost={editPosts}
-			/>)}
+			<div className={s.searchPost}>
+				{!searchPostVisible ?
+					<img onClick={() => { setSearchPostVisible(!searchPostVisible) }} src={search} alt="" />
+					: <div className={s.searchInput}>
+						<MyInput /> <span onClick={() => setSearchPostVisible(!searchPostVisible)}>x</span>
+					</div>}
+			</div>
+			<div className={s.postList}>
+				{posts.map(post => <Post
+					deletePost={deletePost}
+					key={post.id}
+					id={post.id}
+					authorName={post.authorName}
+					message={post.message}
+					likes={post.likes}
+					isLiked={post.isLiked}
+					date={post.date}
+					likeClick={likeClick}
+					editPost={editPosts}
+				/>)}
+			</div>
 		</div>
 	)
 }
