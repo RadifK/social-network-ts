@@ -1,20 +1,29 @@
-import { ChangeEvent, MouseEvent, FC } from 'react'
+import { ChangeEvent, MouseEvent, FC, useState } from 'react'
 import MyButton from './UI/MyButton'
 import MyInput from './UI/MyInput'
 import s from './../style/Wall.module.scss'
+import { addPost } from './../redux/slices/postsSlice'
+import { useDispatch } from 'react-redux'
 
-interface PostFormPropsType {
-	changeHandler: (e: ChangeEvent<HTMLInputElement>) => void,
-	value: string,
-	addPost: (e: MouseEvent<HTMLButtonElement>) => void
-}
 
-const createPostForm: FC<PostFormPropsType> = ({ changeHandler, value, addPost }) => {
+
+const createPostForm: FC = () => {
+
+	const [value, setValue] = useState('')
+
+	const dispatch = useDispatch()
+
+	const clickHandler = (e: MouseEvent<HTMLButtonElement>) => {
+		dispatch(addPost({ e, value }))
+		setValue('')
+	}
+
+	const changeHandler = (e: ChangeEvent<HTMLInputElement>) => { setValue(e.target.value) }
 
 	return (
 		<form className={s.createPostForm} action="">
 			<MyInput placeholder="What's new?" onChange={changeHandler} value={value} type="textarea" />
-			<MyButton onClick={addPost} >Post</MyButton>
+			<MyButton onClick={clickHandler} >Post</MyButton>
 		</form>
 	)
 }

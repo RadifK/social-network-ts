@@ -4,7 +4,8 @@ import cross from '../img/svg/cross.svg'
 import pencil from '../img/svg/pencil.svg'
 import { FC, useState } from 'react';
 import EditPostForm from './EditPostForm';
-
+import { deletePost } from '../redux/slices/postsSlice';
+import { useDispatch } from 'react-redux';
 
 interface PostProps {
 	id: number,
@@ -14,16 +15,13 @@ interface PostProps {
 	isLiked: Boolean,
 	date: any,
 	likeClick: (id: number) => void,
-	deletePost: (id: number) => void,
 	editPost: (id: number, value: string) => void,
 	rerenderPosts?: (id: number) => void
 }
 
+const Post: FC<PostProps> = ({ authorName, message, likes, isLiked, likeClick, id, editPost, date }) => {
 
-
-const Post: FC<PostProps> = ({ authorName, message, likes, isLiked, likeClick, id, deletePost, editPost, date }) => {
-
-
+	const dispatch = useDispatch()
 
 	const [editVisible, setEditVisible] = useState(false)
 
@@ -32,15 +30,11 @@ const Post: FC<PostProps> = ({ authorName, message, likes, isLiked, likeClick, i
 			<div className={s.authorName}>{authorName}</div>
 			<p className={s.date}>{date}</p>
 			<img onClick={() => setEditVisible(!editVisible)} className={s.editImg} src={pencil} alt="" />
-			<EditPostForm
-				id={id}
-				editVisible={editVisible}
-				setEditVisible={setEditVisible}
-				editPost={editPost}
+			<EditPostForm editVisible={editVisible}
 			/>
 
-			<img className={s.deletePost} onClick={() => {
-				deletePost(id)
+			<img className={s.deletePost} onClick={(e) => {
+				dispatch(deletePost({ e, id }))
 			}} src={cross} alt="" />
 			<p className={editVisible ? `${s.message} ${s.invisible}` : s.message}>{message}</p>
 			<div className={isLiked ? `${s.likes} ${s.liked}` : s.likes} onClick={() => {

@@ -6,7 +6,9 @@ interface MyInputPropsType {
 	onChange?: (e: ChangeEvent<HTMLInputElement>) => void,
 	value?: string,
 	type?: string
-	placeholder?: string
+	placeholder?: string,
+	onChange2?: () => void,
+
 }
 
 const MyInput: FC<MyInputPropsType> = ({ ...props }) => {

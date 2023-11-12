@@ -2,19 +2,11 @@ import MyButton from "./UI/MyButton"
 import MyInput from "./UI/MyInput"
 import s from './../style/Post.module.scss'
 import { ChangeEvent, FC, MouseEvent, useState } from "react"
+import { useSelector, useDispatch } from "react-redux"
 
 
 
-type TypeEditPostForm = {
-	id: number
-	editVisible: Boolean,
-	setEditVisible: any,
-	editPost: (id: number, editPostValue: string) => void
-}
-
-
-
-const EditPostForm: FC<TypeEditPostForm> = ({ id, editVisible, setEditVisible, editPost }) => {
+const EditPostForm: FC = ({ editVisible }) => {
 
 	const [editPostValue, setEditPostValue] = useState('')
 
@@ -24,8 +16,7 @@ const EditPostForm: FC<TypeEditPostForm> = ({ id, editVisible, setEditVisible, e
 
 	const clickHandler = (e: MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
-		editPost(id, editPostValue)
-		setEditVisible(!editVisible)
+
 	}
 
 	return (

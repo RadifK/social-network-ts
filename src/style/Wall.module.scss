@@ -19,11 +19,11 @@
 	.searchPost {
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		justify-content: end;
 
 
 		img {
-			height: 30px;
+			height: 25px;
 			cursor: pointer;
 		}
 	}
@@ -42,7 +42,9 @@
 		span {
 			font-weight: 700;
 			cursor: pointer;
+
 		}
+
 	}
 
 	.postList {
