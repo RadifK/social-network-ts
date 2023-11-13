@@ -14,7 +14,8 @@ const createPostForm: FC = () => {
 	const dispatch = useDispatch()
 
 	const clickHandler = (e: MouseEvent<HTMLButtonElement>) => {
-		dispatch(addPost({ e, value }))
+		e.preventDefault()
+		dispatch(addPost({ value }))
 		setValue('')
 	}
 

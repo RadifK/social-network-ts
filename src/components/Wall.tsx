@@ -1,45 +1,15 @@
-import { ChangeEvent, MouseEvent, useMemo, useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 import s from './../style/Wall.module.scss'
 import Post from './Post'
 import CreatePostForm from './createPostForm'
-import moment from 'moment'
 import MyInput from './UI/MyInput'
 import search from './../img/svg/search.svg'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { RootState } from '../redux/store'
 
 const Wall = () => {
 
 	const posts = useSelector((state: RootState) => state.posts)
-
-	const likeClick = (id: number) => {
-
-		const newPosts = posts.map(post => {
-			if (post.id === id) {
-				if (post.isLiked) {
-					post.isLiked = false;
-					post.likes -= 1;
-				}
-				else {
-					post.isLiked = true;
-					post.likes += 1;
-				}
-			}
-			return post
-		})
-
-	}
-
-	const editPosts = (id: number, value: string) => {
-		const newPosts = posts.map(post => {
-			if (post.id === id) {
-				post.message = value
-			}
-			return post
-		})
-
-
-	}
 
 	const [searchPostVisible, setSearchPostVisible] = useState(false)
 
@@ -86,8 +56,6 @@ const Wall = () => {
 						likes={post.likes}
 						isLiked={post.isLiked}
 						date={post.date}
-						likeClick={likeClick}
-						editPost={editPosts}
 					/>) :
 					<h1 style={{
 						fontSize: '24px',

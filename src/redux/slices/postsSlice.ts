@@ -12,7 +12,7 @@ const initialState = [
 		message: 'hello world!',
 		isLiked: false,
 		date: moment().format('MMM Do YYYY, h:mm a'),
-		isEdit: false
+
 	},
 	{
 		id: 2,
@@ -21,7 +21,7 @@ const initialState = [
 		message: 'gl hf',
 		isLiked: false,
 		date: moment().format('MMM Do YYYY, h:mm a'),
-		isEdit: false
+
 	},
 	{
 		id: 3,
@@ -30,7 +30,7 @@ const initialState = [
 		message: 'gg wpgg wpgg wpgg wpgg wpgg wpgg wpgg wpgg wpgg wpgg wpgg wpgg wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww',
 		isLiked: true,
 		date: moment().format('MMM Do YYYY, h:mm a'),
-		isEdit: false
+
 	},
 ]
 
@@ -43,7 +43,7 @@ export const postsSlice = createSlice({
 	initialState,
 	reducers: {
 		addPost: (state, { payload }) => {
-			payload.e.preventDefault()
+
 			return [...state, {
 				id: Number(new Date),
 				authorName: 'Radif Nurlanovich',
@@ -51,16 +51,37 @@ export const postsSlice = createSlice({
 				message: payload.value,
 				isLiked: false,
 				date: moment().format('MMM Do YYYY, h:mm a'),
-				isEdit: false
+
 			}]
 		},
+
 		deletePost: (state, { payload }) => {
-			payload.e.preventDefault()
-			return state.filter(post => post.id !== payload.id)
-		}
+			return state.filter(post => post.id !== payload)
+		},
+
+		editPost: (state, { payload }) => {
+			state.map((post) => {
+				if (post.id === payload.id) {
+					post.message = payload.editPostValue
+					console.log(payload.editPostValue)
+				}
+				return post
+			})
+		},
+
+		likePost(state, { payload }) {
+			state.map(post => {
+				if (post.id === payload) {
+					post.isLiked ? post.likes -= 1 : post.likes += 1;
+					post.isLiked = !post.isLiked
+				}
+			})
+		},
+
+
 	},
 })
 
-export const { addPost, deletePost } = postsSlice.actions
+export const { addPost, deletePost, editPost, likePost } = postsSlice.actions
 
 export default postsSlice.reducer

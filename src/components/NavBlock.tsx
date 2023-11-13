@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import s from './../style/NavBlock.module.scss'
 
 
@@ -6,7 +7,7 @@ const NavBlock = () => {
 	return (
 		<ul className={s.nav}>
 			<li>
-				My Profile
+				<Link to={"/"}>My Profile</Link>
 			</li>
 			<li>
 				News
@@ -18,7 +19,7 @@ const NavBlock = () => {
 				Calls
 			</li>
 			<li>
-				Friends
+				<Link to={"friends"}>Friends</Link>
 			</li>
 			<li>
 				Communities

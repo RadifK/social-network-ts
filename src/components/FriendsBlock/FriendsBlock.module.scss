@@ -1,0 +1,53 @@
+.friendsBlock {
+	background-color: #fff;
+	grid-column: 3/4;
+	grid-row: 3/4;
+	border-radius: 12px;
+	display: grid;
+	grid-template-rows: repeat(1fr);
+	padding: 15px;
+	max-height: 310px;
+
+	.friendsOnline {
+		height: 140px;
+		border-bottom: 1px solid lightgray;
+		display: flex;
+		flex-direction: column;
+
+
+		.blockName {
+
+			font-weight: 600;
+			font-size: 14px;
+		}
+
+		.friendsItems {
+			margin-top: 15px;
+			display: flex;
+			justify-content: space-around;
+
+		}
+
+	}
+
+	.friends {
+		margin-top: 15px;
+		height: 140px;
+		display: flex;
+		flex-direction: column;
+
+
+		.blockName {
+
+			font-weight: 600;
+			font-size: 14px;
+		}
+
+		.friendsItems {
+			margin-top: 15px;
+			display: flex;
+			justify-content: space-around;
+
+		}
+	}
+}

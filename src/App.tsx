@@ -1,20 +1,15 @@
 
-import FriendsBlock from './components/FriendsBlock'
+import FriendsBlock from './components/FriendsBlock/FriendsBlock'
 import Header from './components/Header'
 import NavBlock from './components/NavBlock'
 import ProfileHeader from './components/ProfileHeader'
 import Wall from './components/Wall'
 import s from './style/App.module.scss'
 import { FC } from 'react'
-import type { RootState } from './redux/store'
-import { useSelector, useDispatch } from 'react-redux'
+import { Routes, Route } from 'react-router-dom'
+
 
 const App: FC = () => {
-
-  const count = useSelector((state: RootState) => {
-
-  })
-  const dispatch = useDispatch()
 
   return (
 
@@ -22,9 +17,15 @@ const App: FC = () => {
       <Header />
       <div className={`${s.main} _container`}>
         <NavBlock />
-        <ProfileHeader />
-        <Wall />
-        <FriendsBlock />
+        <Routes>
+          <Route path='/' element={<>
+            <ProfileHeader />
+            <Wall />
+            <FriendsBlock />
+          </>} />
+          <Route path='/friends' element={<div>friends</div>} />
+        </Routes>
+
       </div>
     </div >
 
