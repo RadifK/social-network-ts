@@ -1,8 +1,8 @@
 import { ChangeEvent, MouseEvent, FC, useState } from 'react'
-import MyButton from './UI/MyButton'
-import MyInput from './UI/MyInput'
-import s from './../style/Wall.module.scss'
-import { addPost } from './../redux/slices/postsSlice'
+import MyButton from '../../UI/MyButton'
+import MyInput from '../../UI/MyInput'
+import s from './Wall.module.scss'
+import { addPost } from '../../../redux/slices/postsSlice'
 import { useDispatch } from 'react-redux'
 
 

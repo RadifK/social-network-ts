@@ -1,0 +1,16 @@
+@import './../../style/reset-style.scss';
+@import './../../style/variables.scss';
+
+.App {
+	background-color: $bgc;
+	min-height: 100vh;
+	display: grid;
+	grid-template-rows: 70px 1fr;
+
+}
+
+.main {
+	display: grid;
+	grid-template-columns: auto 86%;
+	column-gap: 10px;
+}

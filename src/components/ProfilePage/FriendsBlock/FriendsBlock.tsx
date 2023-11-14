@@ -1,7 +1,7 @@
 import s from './FriendsBlock.module.scss'
-import FriendItem from './FriendsItem/FriendItem'
+import FriendItem from './FriendsItem/PageFriendItem'
 import { useSelector } from 'react-redux'
-import { RootState } from '../../redux/store'
+import { RootState } from '../../../redux/store'
 
 
 const FriendsBlock = () => {
@@ -13,13 +13,13 @@ const FriendsBlock = () => {
 			<div className={s.friendsOnline}>
 				<p className={s.blockName}>Friends Online</p>
 				<div className={s.friendsItems}>
-					{friends.map(friend => <FriendItem name={friend.name} />)}
+					{friends.filter(friend => friend.online).slice(0, 4).map(friend => <FriendItem online={friend.online} name={friend.name} avaSrc={friend.avatar} />)}
 				</div>
 			</div>
 			<div className={s.friends}>
 				<p className={s.blockName}>Friends </p>
 				<div className={s.friendsItems}>
-					{friends.map(friend => <FriendItem name={friend.name} />)}
+					{friends.slice(0, 4).map(friend => <FriendItem online={friend.online} name={friend.name} avaSrc={friend.avatar} />)}
 				</div>
 			</div>
 		</div>

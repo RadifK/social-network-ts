@@ -1,6 +1,6 @@
-import s from './../style/ProfileHeader.module.scss'
+import s from './ProfileHeader.module.scss'
 import Cover from './Cover'
-import ava from './../img/png-jpg/ava.jpg'
+import ava from './../../../img/png-jpg/ava.jpg'
 
 const ProfileHeader = () => {
 	return (

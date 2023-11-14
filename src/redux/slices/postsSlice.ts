@@ -1,38 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
 
 import moment from 'moment'
 
-const initialState = [
+type TypeInitialState = {
+	id: number,
+	authorName: string,
+	likes: number,
+	message: string,
+	isLiked: Boolean,
+}
 
-	{
-		id: 1,
-		authorName: 'Radif Nurlanovich',
-		likes: 1,
-		message: 'hello world!',
-		isLiked: false,
-		date: moment().format('MMM Do YYYY, h:mm a'),
 
-	},
-	{
-		id: 2,
-		authorName: 'Radif Nurlanovich',
-		likes: 3,
-		message: 'gl hf',
-		isLiked: false,
-		date: moment().format('MMM Do YYYY, h:mm a'),
-
-	},
-	{
-		id: 3,
-		authorName: 'Radif Nurlanovich',
-		likes: 5,
-		message: 'gg wpgg wpgg wpgg wpgg wpgg wpgg wpgg wpgg wpgg wpgg wpgg wpgg wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww',
-		isLiked: true,
-		date: moment().format('MMM Do YYYY, h:mm a'),
-
-	},
-]
+let initialState: TypeInitialState[] = await fetch('https://6553d9ad5449cfda0f2f3f15.mockapi.io/posts').then((res) => res.json()).then((json) => {
+	return json
+})
 
 
 

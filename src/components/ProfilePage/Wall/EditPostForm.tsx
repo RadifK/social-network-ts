@@ -1,9 +1,9 @@
-import MyButton from "./UI/MyButton"
-import MyInput from "./UI/MyInput"
-import s from './../style/Post.module.scss'
+import MyButton from "../../UI/MyButton"
+import MyInput from "../../UI/MyInput"
+import s from './Post/Post.module.scss'
 import { ChangeEvent, FC, MouseEvent, useState } from "react"
 import { useDispatch } from "react-redux"
-import { editPost } from "../redux/slices/postsSlice"
+import { editPost } from "../../../redux/slices/postsSlice"
 
 
 type TypeEditFormProps = {

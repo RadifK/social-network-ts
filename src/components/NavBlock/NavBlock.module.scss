@@ -1,0 +1,21 @@
+.nav {
+	margin-top: 5px;
+	display: flex;
+	flex-direction: column;
+	grid-column: 1/2;
+
+	.navItem {
+
+		font-size: 14px;
+		padding: 10px 5px;
+		cursor: pointer;
+		text-decoration: none;
+		color: inherit;
+
+		&:hover {
+			background-color: #dddddd;
+			border-radius: 10px;
+			transition: ease-in-out 0.1s;
+		}
+	}
+}

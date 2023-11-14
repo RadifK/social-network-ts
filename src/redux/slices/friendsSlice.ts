@@ -1,38 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from '@reduxjs/toolkit'
 
-const initialState = [
-	{
-		id: 1,
-		name: 'Maxim ',
-		surname: 'Admiralov',
-		ava: '',
-		online: true,
-	},
-	{
-		id: 2,
-		name: 'Nikita ',
-		surname: 'Ortyukov',
-		ava: '',
-		online: true,
-	},
-	{
-		id: 3,
-		name: 'Nikolay ',
-		surname: 'Sergeev',
-		ava: '',
-		online: false,
 
-	},
-	{
-		id: 4,
-		name: 'Alyona',
-		surname: 'Bakhtina',
-		ava: '',
-		online: false,
 
-	},
-]
+type TypeInitialState = {
+	id: number,
+	name: string,
+	surname: string,
+	online: Boolean,
+	avatar: string
+}
+
+
+let initialState: TypeInitialState[] = await fetch('https://65230e39f43b179384153062.mockapi.io/items').then((res) => res.json()).then((json) => {
+	return json
+})
+
+
+
+
 
 export const friendsSlice = createSlice({
 	name: 'friedsSlice',

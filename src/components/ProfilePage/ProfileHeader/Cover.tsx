@@ -1,5 +1,5 @@
-import s from './../style/Cover.module.scss'
-import cover from './../img/png-jpg/derevo-sakura-1.png'
+import s from './Cover.module.scss'
+import cover from './../../../img/png-jpg/derevo-sakura-1.png'
 
 
 const Cover = () => {

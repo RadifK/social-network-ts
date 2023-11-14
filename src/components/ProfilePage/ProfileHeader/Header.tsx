@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import s from '../style/Header.module.scss'
-import logo from './../img/svg/typescript-icon-round.svg'
+import s from './Header.module.scss'
+import logo from '../../../img/svg/typescript-icon-round.svg'
 
 const Header: FC = () => {
 	return (

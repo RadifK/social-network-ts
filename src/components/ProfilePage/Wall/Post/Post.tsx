@@ -1,10 +1,10 @@
-import s from '../style/Post.module.scss';
-import like from '../img/svg/like.svg';
-import cross from '../img/svg/cross.svg'
-import pencil from '../img/svg/pencil.svg'
+import s from './Post.module.scss';
+import like from '../../../../img/svg/like.svg';
+import cross from '../../../../img/svg/cross.svg'
+import pencil from '../../../../img/svg/pencil.svg'
 import { FC, useState } from 'react';
-import EditPostForm from './EditPostForm';
-import { deletePost, likePost } from '../redux/slices/postsSlice';
+import EditPostForm from '../EditPostForm';
+import { deletePost, likePost } from '../../../../redux/slices/postsSlice';
 import { useDispatch } from 'react-redux';
 
 interface PostProps {
@@ -13,11 +13,10 @@ interface PostProps {
 	message: string,
 	likes: number,
 	isLiked: Boolean,
-	date: any,
 	rerenderPosts?: (id: number) => void
 }
 
-const Post: FC<PostProps> = ({ authorName, message, likes, isLiked, id, date }) => {
+const Post: FC<PostProps> = ({ authorName, message, likes, isLiked, id }) => {
 
 	const dispatch = useDispatch()
 
@@ -30,7 +29,6 @@ const Post: FC<PostProps> = ({ authorName, message, likes, isLiked, id, date }) 
 	return (
 		<div className={s.post}>
 			<div className={s.authorName}>{authorName}</div>
-			<p className={s.date}>{date}</p>
 			<img className={s.editImg} onClick={setVisibleHandler} src={pencil} alt="" />
 			<EditPostForm id={id} editVisible={editVisible} setVisibleHandler={setVisibleHandler}
 			/>

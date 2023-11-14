@@ -1,11 +1,11 @@
 import { ChangeEvent, useState } from 'react'
-import s from './../style/Wall.module.scss'
-import Post from './Post'
+import s from './Wall.module.scss'
+import Post from './Post/Post'
 import CreatePostForm from './createPostForm'
-import MyInput from './UI/MyInput'
-import search from './../img/svg/search.svg'
+import MyInput from '../../UI/MyInput'
+import search from '../../../img/svg/search.svg'
 import { useSelector } from 'react-redux'
-import { RootState } from '../redux/store'
+import { RootState } from '../../../redux/store'
 
 const Wall = () => {
 
@@ -55,7 +55,6 @@ const Wall = () => {
 						message={post.message}
 						likes={post.likes}
 						isLiked={post.isLiked}
-						date={post.date}
 					/>) :
 					<h1 style={{
 						fontSize: '24px',
