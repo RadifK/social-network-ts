@@ -7,7 +7,6 @@ interface MyInputPropsType {
 	value?: string,
 	type?: string
 	placeholder?: string,
-	onChange2?: () => void,
 
 }
 

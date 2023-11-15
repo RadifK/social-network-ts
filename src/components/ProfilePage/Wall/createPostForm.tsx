@@ -10,6 +10,9 @@ import { useDispatch } from 'react-redux'
 const createPostForm: FC = () => {
 
 	const [value, setValue] = useState('')
+	const [formActive, setFormActive] = useState(false)
+
+
 
 	const dispatch = useDispatch()
 
@@ -17,14 +20,21 @@ const createPostForm: FC = () => {
 		e.preventDefault()
 		dispatch(addPost({ value }))
 		setValue('')
+		setFormActive(false)
 	}
-
-	const changeHandler = (e: ChangeEvent<HTMLInputElement>) => { setValue(e.target.value) }
+	const changeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => { setValue(e.target.value) }
 
 	return (
 		<form className={s.createPostForm} action="">
-			<MyInput placeholder="What's new?" onChange={changeHandler} value={value} type="textarea" />
-			<MyButton onClick={clickHandler} >Post</MyButton>
+			<textarea className={formActive ? s.visible : ''} placeholder="What's new?"
+				onClick={() => { setFormActive(true) }}
+				onChange={changeHandler}
+				value={value}
+			></textarea>
+			{formActive ? <div className={s.createPostOptions}>
+				<MyButton onClick={clickHandler} >Post</MyButton>
+			</div>
+				: <></>}
 		</form>
 	)
 }

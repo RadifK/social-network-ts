@@ -19,6 +19,13 @@ let initialState: TypeInitialState[] = await fetch('https://65230e39f43b17938415
 
 
 
+
+
+
+
+
+
+
 export const friendsSlice = createSlice({
 	name: 'friedsSlice',
 	initialState,

@@ -31,7 +31,7 @@ const Wall = () => {
 		<div className={s.wall}>
 			<CreatePostForm
 			/>
-			<div className={s.searchPost}>
+			{/* <div className={s.searchPost}>
 				{!searchPostVisible ?
 					<img onClick={() => { setSearchPostVisible(!searchPostVisible) }} src={search} alt="" />
 					: <div className={s.searchInput}>
@@ -45,7 +45,7 @@ const Wall = () => {
 							setSearchValue('')
 						}}>x</span>
 					</div>}
-			</div>
+			</div> */}
 			<div className={s.postList}>
 				{searchedPosts().length ?
 					searchedPosts().map(post => <Post
