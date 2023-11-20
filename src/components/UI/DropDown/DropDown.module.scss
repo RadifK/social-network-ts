@@ -1,0 +1,57 @@
+.toolTipBlock {
+
+	display: grid;
+	grid-template-columns: 120px 40px;
+
+	.toolTip {
+		display: none;
+		background-color: #d1d1d1;
+		grid-column: 1/4;
+		height: auto;
+		grid-row: 3/4;
+		border: 1px solid #d1d1d1;
+		background-color: #fff;
+		border-radius: 5px;
+		position: relative;
+		left: 20px;
+		padding: 5px 0px;
+		max-width: 200px;
+
+		.toolTipItem {
+			width: 100%;
+
+			div {
+				width: 100%;
+				cursor: pointer;
+				padding: 6px;
+				font-size: 14px;
+				font-weight: 400;
+
+				&:hover {
+					background-color: #d1d1d1;
+				}
+			}
+
+		}
+	}
+
+	.visible {
+		display: flex;
+	}
+
+	.actions {
+		span {
+			display: inline-block;
+			height: 4px;
+			width: 4px;
+			background-color: #c5c4c4;
+			margin-right: 2px;
+			border-radius: 50%;
+		}
+
+
+		justify-self: end;
+		cursor: pointer;
+		grid-column: 3/4;
+	}
+}

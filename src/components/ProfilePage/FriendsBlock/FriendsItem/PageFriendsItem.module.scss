@@ -6,13 +6,16 @@
 
 	.avatar {
 		display: flex;
+
 		align-items: end;
+
 
 		img {
 			background-color: #e4e2e2;
 			width: 70px;
 			height: 70px;
 			border-radius: 50%;
+			border: 1px solid #d1d1d1;
 			margin-bottom: 5px;
 		}
 
@@ -26,6 +29,12 @@
 			bottom: 10px;
 			right: 14px;
 		}
+
+	}
+
+	.name {
+		font-size: 13px;
+		font-weight: 500;
 	}
 
 

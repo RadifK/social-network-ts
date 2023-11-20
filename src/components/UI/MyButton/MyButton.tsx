@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import s from './../../style/MyButton.module.scss'
+import s from './MyButton.module.scss'
 import { MouseEvent } from 'react'
 
 interface MyButtonPropsType {

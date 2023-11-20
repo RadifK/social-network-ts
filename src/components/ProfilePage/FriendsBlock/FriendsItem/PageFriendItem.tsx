@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import s from './FriendsItem.module.scss'
+import s from './PageFriendsItem.module.scss'
 
 
 type TypeFriendItemProps = {

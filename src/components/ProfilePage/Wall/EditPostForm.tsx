@@ -1,22 +1,27 @@
-import MyButton from "../../UI/MyButton"
-import MyInput from "../../UI/MyInput"
+import MyButton from "../../UI/MyButton/MyButton"
 import s from './Post/Post.module.scss'
 import { ChangeEvent, FC, MouseEvent, useState } from "react"
 import { useDispatch } from "react-redux"
 import { editPost } from "../../../redux/slices/postsSlice"
+import MyTextArea from "../../UI/MyTextArea/MyTextArea"
 
 
 type TypeEditFormProps = {
 	editVisible: Boolean,
 	setVisibleHandler: () => void,
-	id: number
+	id: number,
+	message: string
 }
 
-const EditPostForm: FC<TypeEditFormProps> = ({ setVisibleHandler, editVisible, id }) => {
 
-	const [editPostValue, setEditPostValue] = useState('')
 
-	const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+const EditPostForm: FC<TypeEditFormProps> = ({ setVisibleHandler, editVisible, id, message }) => {
+
+
+
+	const [editPostValue, setEditPostValue] = useState(message)
+
+	const changeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
 		setEditPostValue(e.target.value)
 	}
 
@@ -30,7 +35,7 @@ const EditPostForm: FC<TypeEditFormProps> = ({ setVisibleHandler, editVisible, i
 
 	return (
 		<form className={!editVisible ? `${s.editForm} ${s.invisible}` : s.editForm}>
-			<MyInput value={editPostValue} onChange={changeHandler} />
+			<MyTextArea value={editPostValue} onChange={changeHandler} />
 			<MyButton onClick={clickHandler}>ok</MyButton>
 		</form>
 	)
